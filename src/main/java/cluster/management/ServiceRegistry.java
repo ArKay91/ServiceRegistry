@@ -66,7 +66,7 @@ public class ServiceRegistry implements Watcher {
             String workerZnodeFullPath = REGESTRY_NODE + "/" + workerNode;
             Stat stat = zooKeeper.exists(workerZnodeFullPath, false);
             if(stat == null){
-                return;
+                continue;
             }
             byte[] addressByte = zooKeeper.getData(workerZnodeFullPath, false, stat);
             String address = new String(addressByte);
